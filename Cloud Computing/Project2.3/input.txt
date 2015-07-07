@@ -1,0 +1,39 @@
+Server Software:        Apache/2.2.22
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   61.652 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2270000 bytes
+Total POSTed:           190890000
+HTML transferred:       370000 bytes
+Requests per second:    162.20 [#/sec] (mean)
+Time per request:       616.519 [ms] (mean)
+Time per request:       6.165 [ms] (mean, across all concurrent requests)
+Transfer rate:          35.96 [Kbytes/sec] received
+                        3023.68 kb/s sent
+                        3059.64 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    1  14.1      1    1000
+Processing:   107  613 140.7    607    2857
+Waiting:      107  613 140.7    607    2857
+Total:        112  614 141.6    608    2862
+
+Percentage of the requests served within a certain time (ms)
+  50%    608
+  66%    625
+  75%    637
+  80%    649
+  90%    673
+  95%    706
+  98%    752
+  99%    798
+ 100%   2862 (longest request)

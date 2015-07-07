@@ -1,0 +1,354 @@
+Server Software:        Apache/2.2.22
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   298.082 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      22700000 bytes
+Total POSTed:           1908900000
+HTML transferred:       3700000 bytes
+Requests per second:    335.48 [#/sec] (mean)
+Time per request:       298.082 [ms] (mean)
+Time per request:       2.981 [ms] (mean, across all concurrent requests)
+Transfer rate:          74.37 [Kbytes/sec] received
+                        6253.85 kb/s sent
+                        6328.22 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2  34.2      1    3004
+Processing:    44  295  87.8    293    3457
+Waiting:       44  295  87.8    292    3457
+Total:         46  298  93.8    294    3458
+
+Percentage of the requests served within a certain time (ms)
+  50%    294
+  66%    342
+  75%    363
+  80%    375
+  90%    405
+  95%    434
+  98%    474
+  99%    506
+ 100%   3458 (longest request)
+ 
+ 
+ Server Software:        Apache/2.2.22
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   297.862 seconds
+Complete requests:      100000
+Failed requests:        1
+   (Connect: 0, Receive: 0, Length: 1, Exceptions: 0)
+Write errors:           0
+Total transferred:      22699773 bytes
+Total POSTed:           1908900000
+HTML transferred:       3699963 bytes
+Requests per second:    335.73 [#/sec] (mean)
+Time per request:       297.862 [ms] (mean)
+Time per request:       2.979 [ms] (mean, across all concurrent requests)
+Transfer rate:          74.42 [Kbytes/sec] received
+                        6258.48 kb/s sent
+                        6332.90 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2  19.9      1    1039
+Processing:    16  296  83.9    295    1523
+Waiting:        0  296  83.9    295    1523
+Total:         18  298  86.2    296    1525
+
+Percentage of the requests served within a certain time (ms)
+  50%    296
+  66%    341
+  75%    361
+  80%    374
+  90%    402
+  95%    431
+  98%    468
+  99%    496
+ 100%   1525 (longest request)
+-----------------------------
+
+Server Software:        Apache/2.2.22
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   29.899 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2270000 bytes
+Total POSTed:           190890000
+HTML transferred:       370000 bytes
+Requests per second:    334.46 [#/sec] (mean)
+Time per request:       298.990 [ms] (mean)
+Time per request:       2.990 [ms] (mean, across all concurrent requests)
+Transfer rate:          74.14 [Kbytes/sec] received
+                        6234.86 kb/s sent
+                        6309.00 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2  20.0      1    1001
+Processing:    50  296  92.9    297     953
+Waiting:       50  296  92.9    296     953
+Total:         56  297  94.9    298    1388
+
+Percentage of the requests served within a certain time (ms)
+  50%    298
+  66%    350
+  75%    371
+  80%    383
+  90%    413
+  95%    439
+  98%    481
+  99%    516
+ 100%   1388 (longest request)
+-----------------------------
+ubuntu@ip-10-28-117-67:~/benchmark$ 
+
+
+Server Software:        Apache/2.2.22
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   30.531 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2270000 bytes
+Total POSTed:           190890000
+HTML transferred:       370000 bytes
+Requests per second:    327.53 [#/sec] (mean)
+Time per request:       305.312 [ms] (mean)
+Time per request:       3.053 [ms] (mean, across all concurrent requests)
+Transfer rate:          72.61 [Kbytes/sec] received
+                        6105.75 kb/s sent
+                        6178.36 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2  31.6      1    1008
+Processing:    39  301  81.7    304    1137
+Waiting:       39  301  81.7    303    1137
+Total:         43  304  87.4    305    1379
+
+Percentage of the requests served within a certain time (ms)
+  50%    305
+  66%    344
+  75%    368
+  80%    378
+  90%    403
+  95%    430
+  98%    466
+  99%    492
+ 100%   1379 (longest request)
+-----------------------------
+
+Benchmarking project-1484449091.us-east-1.elb.amazonaws.com (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        0 bytes
+
+Concurrency Level:      100
+Time taken for tests:   5.844 seconds
+Complete requests:      1000
+Failed requests:        999
+   (Connect: 0, Receive: 0, Length: 999, Exceptions: 0)
+Write errors:           0
+Total transferred:      226773 bytes
+Total POSTed:           19089000
+HTML transferred:       36963 bytes
+Requests per second:    171.12 [#/sec] (mean)
+Time per request:       584.392 [ms] (mean)
+Time per request:       5.844 [ms] (mean, across all concurrent requests)
+Transfer rate:          37.90 [Kbytes/sec] received
+                        3189.92 kb/s sent
+                        3227.81 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.7      1      11
+Processing:    63  559  95.5    572     843
+Waiting:        0  559  95.9    572     842
+Total:         69  561  94.7    574     843
+
+Percentage of the requests served within a certain time (ms)
+  50%    574
+  66%    593
+  75%    606
+  80%    616
+  90%    639
+  95%    663
+  98%    692
+  99%    703
+ 100%    843 (longest request)
+ 
+ 
+ Server Software:        Apache/2.2.22
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   6.294 seconds
+Complete requests:      1000
+Failed requests:        0
+Write errors:           0
+Total transferred:      227000 bytes
+Total POSTed:           19089000
+HTML transferred:       37000 bytes
+Requests per second:    158.88 [#/sec] (mean)
+Time per request:       629.403 [ms] (mean)
+Time per request:       6.294 [ms] (mean, across all concurrent requests)
+Transfer rate:          35.22 [Kbytes/sec] received
+                        2961.79 kb/s sent
+                        2997.01 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.7      1      23
+Processing:    70  603 402.5    561    2756
+Waiting:       70  603 402.5    561    2756
+Total:         75  605 403.0    562    2761
+
+Percentage of the requests served within a certain time (ms)
+  50%    562
+  66%    597
+  75%    613
+  80%    635
+  90%    683
+  95%   1465
+  98%   2602
+  99%   2649
+ 100%   2761 (longest request)
+-----------------------------
+
+Server Software:        Apache/2.2.22
+Server Hostname:        project-1484449091.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   61.652 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2270000 bytes
+Total POSTed:           190890000
+HTML transferred:       370000 bytes
+Requests per second:    162.20 [#/sec] (mean)
+Time per request:       616.519 [ms] (mean)
+Time per request:       6.165 [ms] (mean, across all concurrent requests)
+Transfer rate:          35.96 [Kbytes/sec] received
+                        3023.68 kb/s sent
+                        3059.64 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    1  14.1      1    1000
+Processing:   107  613 140.7    607    2857
+Waiting:      107  613 140.7    607    2857
+Total:        112  614 141.6    608    2862
+
+Percentage of the requests served within a certain time (ms)
+  50%    608
+  66%    625
+  75%    637
+  80%    649
+  90%    673
+  95%    706
+  98%    752
+  99%    798
+ 100%   2862 (longest request)
+-----------------------------
+
+Server Software:        Apache/2.2.22
+Server Hostname:        project-1060135287.us-east-1.elb.amazonaws.com
+Server Port:            8080
+
+Document Path:          /verify
+Document Length:        37 bytes
+
+Concurrency Level:      100
+Time taken for tests:   62.180 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2270000 bytes
+Total POSTed:           190890000
+HTML transferred:       370000 bytes
+Requests per second:    160.82 [#/sec] (mean)
+Time per request:       621.799 [ms] (mean)
+Time per request:       6.218 [ms] (mean, across all concurrent requests)
+Transfer rate:          35.65 [Kbytes/sec] received
+                        2998.01 kb/s sent
+                        3033.66 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2  31.5      1    1001
+Processing:    73  617 302.2    581    5134
+Waiting:       73  617 302.2    581    5134
+Total:         78  619 303.9    582    5139
+
+Percentage of the requests served within a certain time (ms)
+  50%    582
+  66%    605
+  75%    618
+  80%    625
+  90%    654
+  95%    682
+  98%    751
+  99%   3331
+ 100%   5139 (longest request)
+-----------------------------
+
+154.67
+168.20
+159.95
+163.13
+163.25
+164.91
+169.48
+168

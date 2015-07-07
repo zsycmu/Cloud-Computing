@@ -1,0 +1,23 @@
+mkdir /storage/tmpfs
+mount -t tmpfs -o size=2001M tmpfs /storage/tmpfs
+
+dd if=/dev/zero of=/storage/tmpfs/ramblock bs=1M count=2000
+mkfs.ext4 /storage/tmpfs/ramblock
+
+mkdir /storage/ramblock/
+mount -o loop /storage/tmpfs/ramblock /storage/ramblock/
+cd /storage/ramblock
+
+cp -a /home/mysql_backup/* .
+chown mysql:mysql /storage/ramblock
+service mysql stop
+
+mount --bind /storage/ramblock /var/lib/mysql
+service mysql start
+cp -R /var/lib/mysql/ /home/mysql_backup/.
+
+
+cd ~/sysbench-0.5/sysbench/
+export RUN_NAME=myRun1
+export MYSQL_SERVER=localhost
+./sysbench --test=tests/db/oltp.lua --mysql-

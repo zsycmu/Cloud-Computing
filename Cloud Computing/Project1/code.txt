@@ -1,0 +1,161 @@
+#Mapper:
+
+#!/usr/bin/python
+     
+import sys
+import os
+import re
+
+for line in sys.stdin:
+#f = open("pagecounts-20130601-000000", "r")
+#while True:
+#line = f.readline()
+    if line:
+        a=line.split()
+        if (a[0] != "en"):
+            continue
+        if(a[1].startswith("Media:") or a[1].startswith("Special:") or a[1].startswith("Talk:")
+           or a[1].startswith("User:") or a[1].startswith("User_talk:") or a[1].startswith("Project:")
+           or a[1].startswith("Project_talk:") or a[1].startswith("File:") or a[1].startswith("File_talk:")
+           or a[1].startswith("MediaWiki:") or a[1].startswith("MediaWiki_talk:") or a[1].startswith("Template:") 
+           or a[1].startswith("Template_talk:") or a[1].startswith("Help:") or a[1].startswith("Help_talk:") 
+           or a[1].startswith("Category:") or a[1].startswith("Category_talk:") or a[1].startswith("Portal:") 
+           or a[1].startswith("Wikipedia:") or a[1].startswith("Wikipedia_talk:")):
+            continue
+        if(a[1].startswith("a") or a[1].startswith("b") or a[1].startswith("c") or a[1].startswith("d")
+           or a[1].startswith("e") or a[1].startswith("f") or a[1].startswith("g") or a[1].startswith("h")
+           or a[1].startswith("i") or a[1].startswith("j") or a[1].startswith("k") or a[1].startswith("l")
+           or a[1].startswith("m") or a[1].startswith("n") or a[1].startswith("o") or a[1].startswith("p")
+           or a[1].startswith("q") or a[1].startswith("r") or a[1].startswith("s") or a[1].startswith("t")
+           or a[1].startswith("u") or a[1].startswith("v") or a[1].startswith("w") or a[1].startswith("x")
+           or a[1].startswith("y") or a[1].startswith("z")):
+            continue
+        if(a[1].endswith(".jpg") or a[1].endswith(".gif") or a[1].endswith(".png") or a[1].endswith(".JPG")
+           or a[1].endswith(".GIF") or a[1].endswith(".PNG") or a[1].endswith(".txt") or a[1].endswith(".ico")):
+            continue
+        if(a[1]=="404_error/" or a[1]=="Main_Page" or a[1]=="Hypertext_Transfer_Protocol" 
+           or a[1]=="Favicon.ico" or a[1]=="Search"):
+            continue
+        else:
+            new_line = line
+            date = 0
+            file_name = os.environ["map_input_file"]
+            #file_name = "pagecounts-20130601-000000"
+            file_name_split = file_name.split("-")
+            date = file_name_split[-2][-2:]
+            process_line = new_line.split()
+            first = process_line[1]
+            second = process_line[2]
+            result = first + "\t" + date + ":" + second
+            print (result)
+    else:
+        break
+        
+        
+#Reducer: 
+
+#!/usr/bin/python
+
+import sys
+import re
+import os
+
+old_title = ""
+dict = {'01' : 0, '02' : 0, '03' : 0, '04' : 0, '05' : 0, '06' : 0, '07' : 0, '08' : 0, '09' : 0, 
+        '10' : 0, '11' : 0, '12' : 0, '13' : 0, '14' : 0, '15' : 0, '16' : 0, '17' : 0, '18' : 0, 
+        '19' : 0, '20' : 0, '21' : 0, '22' : 0, '23' : 0, '24' : 0, '25' : 0, '26' : 0, '27' : 0, 
+        '28' : 0, '29' : 0, '30' : 0, '31' : 0}
+
+total = 0
+for line in sys.stdin:
+#f = open("test", "r")
+    
+#while True:
+#line = f.readline()
+
+    if line:
+        a = line.split("\t")
+        name = a[0]
+        second_part = a[1]
+        second_part_split = second_part.split(":")
+        date = second_part_split[0]
+        view = second_part_split[1]
+        if(old_title == ""):
+            old_title = a[0]
+            total = int(view)
+            dict[date] = dict[date] + int(view)
+        elif(old_title == name):
+            total = int(total) + int(view)
+            dict[date] = dict[date] + int(view)
+        else:
+            if(int(total) > 100000):
+                print(str(total) + "\t" + str(old_title)
+                       + "\t" + "01"+ ":" + str(dict["01"]) + "\t" + "02"+ ":" + str(dict["02"])
+                       + "\t" + "03"+ ":" + str(dict["03"]) + "\t" + "04"+ ":" + str(dict["04"])
+                       + "\t" + "05"+ ":" + str(dict["05"]) + "\t" + "06"+ ":" + str(dict["06"])
+                       + "\t" + "07"+ ":" + str(dict["07"]) + "\t" + "08"+ ":" + str(dict["08"])
+                       + "\t" + "09"+ ":" + str(dict["09"]) + "\t" + "10"+ ":" + str(dict["10"])
+                       + "\t" + "11"+ ":" + str(dict["11"]) + "\t" + "12"+ ":" + str(dict["12"])
+                       + "\t" + "13"+ ":" + str(dict["13"]) + "\t" + "14"+ ":" + str(dict["14"])
+                       + "\t" + "15"+ ":" + str(dict["15"]) + "\t" + "16"+ ":" + str(dict["16"])
+                       + "\t" + "17"+ ":" + str(dict["17"]) + "\t" + "18"+ ":" + str(dict["18"])
+                       + "\t" + "19"+ ":" + str(dict["19"]) + "\t" + "20"+ ":" + str(dict["20"])
+                       + "\t" + "21"+ ":" + str(dict["21"]) + "\t" + "22"+ ":" + str(dict["22"])
+                       + "\t" + "23"+ ":" + str(dict["23"]) + "\t" + "24"+ ":" + str(dict["24"])
+                       + "\t" + "25"+ ":" + str(dict["25"]) + "\t" + "26"+ ":" + str(dict["26"])
+                       + "\t" + "27"+ ":" + str(dict["27"]) + "\t" + "28"+ ":" + str(dict["28"])
+                       + "\t" + "29"+ ":" + str(dict["29"]) + "\t" + "30"+ ":" + str(dict["30"])
+                       + "\t" + "31"+ ":" + str(dict["31"]))
+            old_title = name
+            for key in dict.keys():
+                dict[key] = 0
+            dict[date] = dict[date] + int(view)
+            total = view
+    else:
+        break
+    
+if(int(total) > 100000):
+    print(str(total) + "\t" + str(old_title)
+           + "\t" + "01"+ ":" + str(dict["01"]) + "\t" + "02"+ ":" + str(dict["02"])
+           + "\t" + "03"+ ":" + str(dict["03"]) + "\t" + "04"+ ":" + str(dict["04"])
+           + "\t" + "05"+ ":" + str(dict["05"]) + "\t" + "06"+ ":" + str(dict["06"])
+           + "\t" + "07"+ ":" + str(dict["07"]) + "\t" + "08"+ ":" + str(dict["08"])
+           + "\t" + "09"+ ":" + str(dict["09"]) + "\t" + "10"+ ":" + str(dict["10"])
+           + "\t" + "11"+ ":" + str(dict["11"]) + "\t" + "12"+ ":" + str(dict["12"])
+           + "\t" + "13"+ ":" + str(dict["13"]) + "\t" + "14"+ ":" + str(dict["14"])
+           + "\t" + "15"+ ":" + str(dict["15"]) + "\t" + "16"+ ":" + str(dict["16"])
+           + "\t" + "17"+ ":" + str(dict["17"]) + "\t" + "18"+ ":" + str(dict["18"])
+           + "\t" + "19"+ ":" + str(dict["19"]) + "\t" + "20"+ ":" + str(dict["20"])
+           + "\t" + "21"+ ":" + str(dict["21"]) + "\t" + "22"+ ":" + str(dict["22"])
+           + "\t" + "23"+ ":" + str(dict["23"]) + "\t" + "24"+ ":" + str(dict["24"])
+           + "\t" + "25"+ ":" + str(dict["25"]) + "\t" + "26"+ ":" + str(dict["26"])
+           + "\t" + "27"+ ":" + str(dict["27"]) + "\t" + "28"+ ":" + str(dict["28"])
+           + "\t" + "29"+ ":" + str(dict["29"]) + "\t" + "30"+ ":" + str(dict["30"])
+           + "\t" + "31"+ ":" + str(dict["31"]))
+           
+#output process
+
+'''
+Created on Feb 1, 2014
+
+@author: Zhang
+'''
+f = open("output", "r")
+finaloutput = open("final-output", "w")
+
+count = 0
+
+while True:
+    line = f.readline()
+    if line:
+        #print line,
+        count = count + 1;
+        b=line.split('\t')
+        print(b[0])
+
+    else:
+        break
+
+f.close()
+finaloutput.close()
+print(count)

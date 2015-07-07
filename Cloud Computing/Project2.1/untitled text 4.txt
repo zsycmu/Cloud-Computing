@@ -1,0 +1,67 @@
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.cloudwatch.AmazonCloudWatchClient;
+import com.amazonaws.services.cloudwatch.model.Datapoint;
+import com.amazonaws.services.cloudwatch.model.Dimension;
+import com.amazonaws.services.cloudwatch.model.GetMetricStatisticsRequest;
+import com.amazonaws.services.cloudwatch.model.GetMetricStatisticsResult;
+import com.amazonaws.services.ec2.AmazonEC2Client;
+import com.amazonaws.services.ec2.model.Instance;
+import com.amazonaws.services.ec2.model.Reservation;
+
+
+public class ListInstance {
+	public static void main(String[] args) throws IOException{
+     	//Load the Properties File with AWS Credentials
+     	Properties properties = new Properties();
+		properties.load(ListInstance.class.getResourceAsStream("/AwsCredentials.properties"));
+		
+		BasicAWSCredentials bawsc = new BasicAWSCredentials(properties.getProperty("accessKey"), properties.getProperty("secretKey"));
+		     	
+		//Launch an EC2 Client 
+		AmazonEC2Client amazonEC2Client = new AmazonEC2Client(bawsc);
+		
+		//Obtain a list of Reservations
+		List<Reservation> reservations = amazonEC2Client.describeInstances().getReservations();
+			
+		int reservationCount = reservations.size();
+		
+		long offsetInMilliseconds = 1000 * 60 * 60 * 24;
+		GetMetricStatisticsRequest request = new GetMetricStatisticsRequest()
+			.withStartTime(new Date(new Date().getTime() - offsetInMilliseconds))
+			.withNamespace("AWS/EC2")
+			.withPeriod(60 * 60)
+			.withDimensions(new Dimension().withName("InstanceId").withValue("i-2c0e250c"))
+			.withMetricName("CPUUtilization")
+			.withStatistics("Average", "Maximum")
+			.withEndTime(new Date());
+		AmazonCloudWatchClient cw = new AmazonCloudWatchClient(bawsc);
+		GetMetricStatisticsResult getMetricStatisticsResult = cw.getMetricStatistics(request);
+		double avgCPUUtilization = 0;
+		List dataPoint = getMetricStatisticsResult.getDatapoints();
+		for (Object aDataPoint : dataPoint) {
+			Datapoint dp = (Datapoint) aDataPoint;
+			avgCPUUtilization = dp.getAverage();
+			System.out.println("i-2c0e250c" + " instance's average CPU utilization : " + dp.getAverage());
+		}
+		
+		for(int i = 0; i < reservationCount; i++) {
+			List<Instance> instances = reservations.get(i).getInstances();
+		
+			int instanceCount = instances.size();
+			
+			//Print the instance IDs of every instance in the reservation.
+			for(int j = 0; j < instanceCount; j++) {
+				Instance instance = instances.get(j);
+		
+				if(instance.getState().getName().equals("running")) {
+					System.out.println(instance.getInstanceId());
+				}
+			}
+		}
+ 	
+	}
+}
